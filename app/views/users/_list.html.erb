@@ -24,7 +24,15 @@
       </tbody></table>
     </table>
     <div class="row">
-      <a class="btn btn-outline-secondary btn-block fas fa-user-cog" href="/users/<%= @user.id %>/edit"></a>
+      <% if current_user == user %>
+        <a class="btn btn-outline-secondary btn-block fas fa-user-cog" href="/users/<%= @user.id %>/edit"></a>
+      <% else %>
+        <% if current_user.following?(user) %>
+          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+        <% else %>
+          <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <!--User info終了-->
