@@ -28,9 +28,9 @@
         <a class="btn btn-outline-secondary btn-block fas fa-user-cog" href="/users/<%= @user.id %>/edit"></a>
       <% else %>
         <% if current_user.following?(user) %>
-          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, :class=>"btn btn-info" %>
         <% else %>
-          <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+          <%= link_to 'フォローする', follow_path(user.id), method: :POST, :class=>"btn btn-success" %>
         <% end %>
       <% end %>
     </div>
